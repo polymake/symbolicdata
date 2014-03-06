@@ -5,7 +5,7 @@
 
 use application "polytope";
 
-my $cone_dim = shift;
+my $cone_dim = new Int($ARGV[0]);
 
 my $NS = "http://polymake.org/data/LatticePolytopes/SmoothReflexive/";
 my $NSP = "sd";
