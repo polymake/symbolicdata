@@ -8,7 +8,7 @@ use application "polytope";
 my $cone_dim = new Int($ARGV[0]);
 
 my $NS = "http://polymake.org/data/LatticePolytopes/SmoothReflexive/";
-my $NSP = "sd";
+my $NSP = "pm";
 
 my @intprops = ("n_vertices", "n_facets", "cone_ambient_dim", "cone_dim", "facet_width");
 my @booleanprops = ("smooth", "reflexive", "very_ample");
@@ -42,7 +42,7 @@ while($c->has_next) {
 	my $name = $p->_id;
 
     my $ttl=<<EOF;
-<$NS$name> a sd:FanoPolytope ;
+<$NS$name> a pm:SmoothReflexivePolytope ;
  $NSP:hasDimension "$dim" ;
 EOF
 
@@ -57,15 +57,17 @@ sub getPreamble {
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sd: <http://symbolicdata.org/Data/Model/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix pm: <http://polymake.org/data/> .
+
 
 <http://polymake.org/data/LatticePolytopes/SmoothReflexive/>
 a owl:Ontology ;
 rdfs:comment "Low Dimensional Smooth Reflexive Lattice Polytopes, provided by the polymake project (www.polymake.org), (Benjamin Lorenz, Silke Horn, Andreas Paffenholz)" ;
 rdfs:label "SD SmoothReflexivePolytopes" .
 
-sd:SmoothReflexivePolytope
+pm:SmoothReflexivePolytope
 a owl:Class ;
 rdfs:label "SmoothReflexivePolytope" .
 
