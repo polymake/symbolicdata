@@ -59,7 +59,7 @@ sub getPreamble {
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
-@prefix pm: <http://polymake.org/data/> .
+@prefix pm: <http://polymake.org/data/Model#> .
 
 
 <http://polymake.org/data/LatticePolytopes/SmoothReflexive/>
