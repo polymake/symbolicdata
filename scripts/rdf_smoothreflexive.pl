@@ -10,8 +10,10 @@ my $cone_dim = new Int($ARGV[0]);
 my $NS = "http://polymake.org/data/LatticePolytopes/SmoothReflexive/";
 my $NSP = "pm";
 
-my @intprops = ("n_vertices", "n_facets", "cone_ambient_dim", "cone_dim", "facet_width");
-my @booleanprops = ("smooth", "reflexive", "very_ample");
+my @intprops = ("n_vertices", "n_facets", "cone_ambient_dim", "cone_dim", "facet_width", "lattice_volume", "lattice_degree", "lattice_codegree", "n_interior_lattice_points", "n_lattice_points", "n_boundary_lattice_points");
+my @booleanprops = ("smooth", "reflexive", "very_ample", "gorenstein");
+my @lowercasestringprops = ("date", "contributor");
+my @vectorprops = ("h_star_vector","ehrhart_polynomial_coeff","f_vector","facet_widths");
 
 print getPreamble();
 
@@ -32,6 +34,19 @@ while($c->has_next) {
 	}
 
 	foreach (@booleanprops) {
+		my $prop = $_;
+		$prop=~s/(\w)/\U$1/g;
+		my $val = $p->give($prop);
+		push @properties, " $NSP:$_ \"$val\"";
+	}
+
+	foreach (@lowercasestringprops) {
+		my $prop = $_;
+		my $val = $p->give($prop);
+		push @properties, " $NSP:$_ \"$val\"";
+	}
+
+	foreach (@vectorprops) {
 		my $prop = $_;
 		$prop=~s/(\w)/\U$1/g;
 		my $val = $p->give($prop);
